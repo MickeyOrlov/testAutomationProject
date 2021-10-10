@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+
+allprojects {
+
+repositories {
+    mavenCentral()
+}
+ext {
+    jackson_version = '2.11.3'
+    jackson = [
+            "com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
+            "com.fasterxml.jackson.core:jackson-databind:$jackson_version",
+            "com.fasterxml.jackson.module:jackson-module-jaxb-annotations:$jackson_version",
+            "com.fasterxml.jackson.module:jackson-module-parameter-names:$jackson_version",
+            "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jackson_version",
+    ]
+}
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    implementation 'junit:junit:4.13.1'
+    implementation group: 'org.assertj', name: 'assertj-core', version: '3.17.2'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
+    implementation jackson
+
+}
+
+test {
+    useJUnitPlatform()
+}
